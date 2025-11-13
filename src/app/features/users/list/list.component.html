@@ -1,1 +1,26 @@
-<p>list works!</p>
+<div class="user-list-container">
+<h2>Users list</h2>
+<div *ngIf="loading" class="loading">Loading Users</div>
+<table *ngIf="!loading && users.length > 0">
+  <thead>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.role }}</td>
+      <td>
+        <button>Edit</button>
+        <button>Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="!loading && users.length === 0" class="no-users">No users found.</div>
+</div>

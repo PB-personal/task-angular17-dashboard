@@ -1,0 +1,25 @@
+.user-list-container {
+  width: 80%;
+  margin: 40px auto;
+}
+table {
+  width: 100%;
+  margin-top: 10px;
+}
+th,
+td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+thead {
+  background-color: #1976d2;
+  color: white;
+}
+.loading,
+.no-users {
+  text-align: center;
+  margin-top: 50px;
+  color: #555;
+}
