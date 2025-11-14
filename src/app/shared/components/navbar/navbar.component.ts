@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent {
-  private authService = inject(AuthService);
+  public authService = inject(AuthService);
   loggedIn = computed(() => this.authService.isLoggedIn());
 
   logout() {

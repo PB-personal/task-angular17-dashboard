@@ -1,6 +1,7 @@
- <nav class="navbar">
-      <a routerLink="/dashboard">Dashboard</a>
-      <a routerLink="/users">Users</a>
-      <a routerLink="/login" *ngIf="!loggedIn()">Login</a>
-      <button *ngIf="loggedIn()" (click)="logout()">Logout</button>
-    </nav>
+<nav class="navbar">
+  <a routerLink="/dashboard">Dashboard</a>
+  <a routerLink="/users">Users</a>
+  <a *ngIf="loggedIn()">{{ authService.userRole() }}</a>
+  <a *ngIf="!loggedIn()" routerLink="/auth/login">Login</a>
+  <button *ngIf="loggedIn()" (click)="logout()">Logout</button>
+</nav>

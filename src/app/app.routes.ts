@@ -4,11 +4,12 @@ import { RegisterComponent } from './features/auth/register/register.component';
 import { AnalyticsComponent } from './features/dashboard/analytics/analytics.component';
 import { DetailsComponent } from './features/users/details/details.component';
 import { authGuard } from './core/guards/auth/auth.guard';
+import { LoginGuard } from './core/guards/auth/login.guard';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'auth/login',
+    redirectTo: '/auth/login',
     pathMatch: 'full',
   },
   {
@@ -16,11 +17,12 @@ export const routes: Routes = [
     children: [
       {
         path: 'login',
+        canActivate: [LoginGuard],
+
         loadComponent: () =>
           import('./features/auth/login/login.component').then(
             (m) => m.LoginComponent
           ),
-        canActivate: [authGuard],
       },
       {
         path: 'register',
@@ -28,7 +30,6 @@ export const routes: Routes = [
           import('./features/auth/register/register.component').then(
             (m) => m.RegisterComponent
           ),
-        canActivate: [authGuard],
       },
     ],
   },
@@ -45,6 +46,19 @@ export const routes: Routes = [
     path: 'dashboard/analytics',
     component: AnalyticsComponent,
     canActivate: [authGuard],
+  },
+  {
+    path: 'admin',
+    loadComponent: () =>
+      import('./features/admin/admin.component').then((m) => m.AdminComponent),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'unauthorized',
+    loadComponent: () =>
+      import('./features/not-authorized/not-authorized.component').then(
+        (m) => m.NotAuthorizedComponent
+      ),
   },
   {
     path: 'users',
